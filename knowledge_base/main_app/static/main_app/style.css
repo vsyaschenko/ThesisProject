@@ -1,0 +1,18 @@
+.header {
+    float: left;
+    height: 100px;
+    width: 100%;
+    background-color: azure;
+}
+
+.header a, img{
+    float: left;
+    display: block;
+    height: 100px;
+    width: 100px;
+}
+
+.header .text_header {
+    margin: 10px;
+    width: 70%;
+}

@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type='text/css' 
+        href="{% static 'main_app\style.css' %}">
+        
+        <meta http-equiv="Content-Type" content="text/html">
+       
+        <title>База знаний - {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <div class='header'>
+            <a href="{% url 'index' %}">
+                <img src="{% static 'main_app\logo.jpg' %}" 
+                alt="На главную">
+            </a>
+            <div class='text_header'>
+                <h1>Корпоративная база знаний {{ company_name }}</h1>
+            </div>
+            <div class='account_header'>
+                
+            </div>
+        </div>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
