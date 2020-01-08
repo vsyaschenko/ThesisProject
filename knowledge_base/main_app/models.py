@@ -60,3 +60,16 @@ class Solutions(models.Model):
     relevant = models.BooleanField(verbose_name='Действует', default=True)
     published = models.DateTimeField(verbose_name='Опубликовано')
 
+class Settings(models.Model):
+    class Meta:    
+        verbose_name_plural = 'Настройки по умолчанию'
+        verbose_name = 'Настройка по умолчанию'
+    
+    def __str__(self):
+        return self.key
+
+    key = models.CharField(verbose_name='Ключ', max_length=50, 
+                                                primary_key=True)
+    value = models.CharField(verbose_name='Значение', max_length=100,
+                                                        blank=True)
+    
