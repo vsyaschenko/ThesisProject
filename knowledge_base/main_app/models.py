@@ -1,6 +1,6 @@
 from django.db import models
 
-class Section(models.Model):
+class Sections(models.Model):
     class Meta:
         verbose_name_plural = 'Области знаний'
         verbose_name = 'Область знаний'
@@ -25,7 +25,7 @@ class Processes(models.Model):
     name = models.CharField(verbose_name='Название', max_length=100)
     content = models.TextField(verbose_name='Описание', null=True, blank=True)
     relevant = models.BooleanField(verbose_name='Действует', default=True)
-    section = models.ForeignKey(Section, verbose_name='Раздел',
+    section = models.ForeignKey(Sections, verbose_name='Раздел', null=True,
                                          on_delete=models.PROTECT)
 
 class Problems(models.Model):
