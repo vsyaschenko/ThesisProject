@@ -41,9 +41,9 @@ class Problems(models.Model):
     content = models.TextField(verbose_name='Описание', null=True, blank=True)
     relevant = models.BooleanField(verbose_name='Действует', default=True)
     process = models.ForeignKey(Processes, verbose_name='Процесс',
-                                            on_delete=models.PROTECT)
+                                on_delete=models.PROTECT)
     published = models.DateTimeField(verbose_name='Опубликовано', 
-                                        auto_now=True)
+                                    auto_now=True)
     
 class Solutions(models.Model):
     class Meta: 
@@ -58,7 +58,8 @@ class Solutions(models.Model):
                                             on_delete=models.PROTECT)
     content = models.TextField(verbose_name='Описание', null=True, blank=True)
     relevant = models.BooleanField(verbose_name='Действует', default=True)
-    published = models.DateTimeField(verbose_name='Опубликовано')
+    published = models.DateTimeField(verbose_name='Опубликовано',
+                                     auto_now=True)
 
 class Settings(models.Model):
     class Meta:    

@@ -18,6 +18,10 @@
         </header>
         <nav>
             <a href="{% url 'index' %}">Главная</a>
+            <hr>
+            <a href="{% url 'add_problem' %}">Новая проблема</a>
+            <a href="{% url 'add_solution' %}">Предложить решение</a>
+            <hr>
             {% for section in sections %}
             <a href="{% url 'by_section' section.pk %}">
             {{ section.name }}

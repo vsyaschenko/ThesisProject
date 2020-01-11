@@ -1,7 +1,9 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic.edit import CreateView
 
 from .models import Sections, Processes, Problems, Solutions, Settings
-
+from .forms import ProblemForm, SolutionForm
 
 def get_default_context():
     sections = Sections.objects.all()
@@ -41,3 +43,27 @@ def by_problem(request, problem_id):
     context['current_solution'] = Solutions.objects.get(problem=problem_id)
 
     return render(request, 'main_app/by_problem.html', context)
+
+class ProblemCreateView(CreateView):
+    template_name = 'main_app/create_problem.html'
+    form_class = ProblemForm
+    success_url = reverse_lazy('index')
+
+    def get_context_data(self, **kwargs):
+        default_context = get_default_context()
+        context = super().get_context_data(**kwargs)
+        context.update(default_context)
+
+        return context
+
+class SolutionCreateView(CreateView):
+    template_name = 'main_app/create_solution.html'
+    form_class = SolutionForm
+    success_url = reverse_lazy('index')
+
+    def get_context_data(self, **kwargs):
+        default_context = get_default_context()
+        context = super().get_context_data(**kwargs)
+        context.update(default_context)
+
+        return context        
