@@ -1,0 +1,13 @@
+{% extends "layout/basic.html" %} 
+
+{% block title %} {{ current_section.name }} {% endblock %}
+{% block content %}
+{% for process in processes %}
+<div>
+    <p><a href="{% url 'by_section' process.section.pk %}">{{ process.section.name }}</a></p>
+    <h2><a href="{% url 'by_process' process.pk %}">{{ process.name }}</a></h2>
+    <p>{{ process.content }}</p>
+    <hr>
+</div>
+{% endfor %}
+{% endblock %}

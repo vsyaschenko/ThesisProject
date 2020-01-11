@@ -1,0 +1,13 @@
+{% extends "layout/basic.html" %} 
+
+{% block title %} {{ current_process.name }} {% endblock %}
+{% block content %}
+{% for problem in problems %}
+<div>
+    <p><a href="{% url 'by_process' problem.process.pk %}">{{ problem.process.name }}</a></p>
+    <h2><a href="{% url 'by_problem' problem.pk %}">{{ problem.name }}</a></h2>
+    <p>{{ problem.content }}</p>
+    <hr>
+</div>
+{% endfor %}
+{% endblock %}

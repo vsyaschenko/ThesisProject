@@ -3,60 +3,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" type='text/css' 
+        <link rel="stylesheet" type="text/css" 
         href="{% static 'main_app\style.css' %}">
         
-        <meta http-equiv="Content-Type" content="text/html">
-       
-        <title>База знаний - {% block title %}{% endblock %}</title>
+        <meta http-equiv="Content-Type"
+        content="text/html; charset=utf-8">
+        <title>
+        {% block title %}Главная{% endblock %} - База знаний
+        </title>
     </head>
     <body>
-        <div class='header'>
-            <div class='logo'>
-                <a href="{% url 'index' %}">
-                    <img src="{% static 'main_app\logo.jpg' %}" 
-                    alt="На главную">
-                </a>
-                <div class="logo_text">
-                    <h1><a href="">{{ company_name }}</a></h1>
-                    <p>Корпоративная база знаний</p>
-                </div>
-            </div>
-            <div class="search">
-                <form  action="index.html" method="post">
-                  <input type="search" placeholder="введите запрос">
-                  <input type="submit" value="найти">
-                </form>
-            </div>
-        </div>  
-
-        <div class="main_menu">
-            <nav>
-              <a href="#">Главная</a>
-              <a href="#">Есть проблема</a>
-              <a href="#">Предложить решение</a>
-              <a href="#">Контакты</a>
-            </nav>
-        </div>
-
-        <div class='sections_and_content'>
-            <div class='sections'>
-                <ul>
-                    <li class='li_home'><h3>Области знаний:</h3></li>
-                    {% for section in sections %}
-                    <li>
-                        <a href="{% url 'by_section' section.pk %}">
-                        <h4>{{ section.name }}</h4></a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-    
-            <div class='content'>
-                {% block content %}
-                {% endblock %}
-            </div>
-        </div>
-
+        <header>
+            <h1>{{ company_name }}</h1>
+        </header>
+        <nav>
+            <a href="{% url 'index' %}">Главная</a>
+            {% for section in sections %}
+            <a href="{% url 'by_section' section.pk %}">
+            {{ section.name }}
+            </a>
+            {% endfor %}
+        </nav>
+        <section>
+        {% block content %}
+        {% endblock %}
+        </section>
     </body>
 </html>

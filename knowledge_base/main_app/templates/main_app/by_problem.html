@@ -1,0 +1,14 @@
+{% extends "layout/basic.html" %} 
+
+{% block title %} {{ current_problem.name }} {% endblock %}
+{% block content %}
+<div>
+    <h2>{{ current_problem.name }}</h2>
+    <h3>Проблема:</h3>
+    <p>{{ current_problem.content }}</p>
+    <hr>
+    <h3>Решение:</h3>
+    <p>{{ current_solution.content }}</p>
+    
+</div>
+{% endblock %}

@@ -1,13 +1,13 @@
-{% extends 'layout/basic.html' %}
-
-{% block title %}
-Главная
-{% endblock %}
+{% extends "layout/basic.html" %} 
 
 {% block content %}
-{% for solution in solutions %}
+{% for process in processes %}
 <div>
-    <a href="{% url 'by_solution' solution.pk %}"><h4>{{ solution.problem.name }}</h4></a>
+    <p><a href="{% url 'by_section' process.section.pk %}">{{ process.section.name }}</a></p>
+    <h2><a href="{% url 'by_process' process.pk %}">{{ process.name }}</a></h2>
+    <p>{{ process.content }}</p>
+    <!-- <p>{{ process.pudlished|date:"d.m.Y H:i:s" }}</p> -->
+    <hr>
 </div>
 {% endfor %}
 {% endblock %}
