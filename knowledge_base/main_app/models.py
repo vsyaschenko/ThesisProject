@@ -25,8 +25,10 @@ class Processes(models.Model):
     name = models.CharField(verbose_name='Название', max_length=100)
     content = models.TextField(verbose_name='Описание', null=True, blank=True)
     relevant = models.BooleanField(verbose_name='Действует', default=True)
-    section = models.ForeignKey(Sections, verbose_name='Раздел', null=True,
-                                         on_delete=models.PROTECT)
+    section = models.ForeignKey(Sections, 
+                                verbose_name='Раздел', 
+                                null=True,
+                                on_delete=models.PROTECT)
 
 class Problems(models.Model):
     class Meta:
@@ -37,13 +39,19 @@ class Problems(models.Model):
     def __str__(self):
         return self.name
 
+    # Пример того, как задать вычисляемое значение по умолчанию
+    # def relevant_default():
+    #     return True
+    # relevant = models.BooleanField(verbose_name='Действует', 
+    #                                   default=relevant_default)
     name = models.CharField(verbose_name='Название', max_length=100)
     content = models.TextField(verbose_name='Описание', null=True, blank=True)
     relevant = models.BooleanField(verbose_name='Действует', default=True)
-    process = models.ForeignKey(Processes, verbose_name='Процесс',
+    process = models.ForeignKey(Processes, 
+                                verbose_name='Процесс',
                                 on_delete=models.PROTECT)
     published = models.DateTimeField(verbose_name='Опубликовано', 
-                                    auto_now=True)
+                                        auto_now=True)
     
 class Solutions(models.Model):
     class Meta: 
@@ -54,8 +62,10 @@ class Solutions(models.Model):
     def __str__(self):
         return self.problem.name
 
+    problem_fitler = {'relevant': True}
     problem = models.ForeignKey(Problems, verbose_name='Проблема', 
-                                            on_delete=models.PROTECT)
+                                            on_delete=models.PROTECT,
+                                            limit_choices_to=problem_fitler)
     content = models.TextField(verbose_name='Описание', null=True, blank=True)
     relevant = models.BooleanField(verbose_name='Действует', default=True)
     published = models.DateTimeField(verbose_name='Опубликовано',
@@ -69,8 +79,11 @@ class Settings(models.Model):
     def __str__(self):
         return self.key
 
-    key = models.CharField(verbose_name='Ключ', max_length=50, 
-                                                primary_key=True)
-    value = models.CharField(verbose_name='Значение', max_length=100,
-                                                        blank=True)
+    key = models.CharField(verbose_name='Ключ', 
+                            unique=True,
+                            max_length=50, 
+                            primary_key=True)
+    value = models.CharField(verbose_name='Значение', 
+                                max_length=100,
+                                blank=True)
     
