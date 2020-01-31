@@ -1,6 +1,14 @@
-*{
+* {
 	margin: 0;
 	padding: 0;
+}
+a {
+	color: #424242;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #449ddf
 }
 
 body {
@@ -11,10 +19,36 @@ body {
 div.header {
 	height: 80px;
 	width: 97vw;
+	min-width: 1000px;
 	margin-bottom: 4px;
 	background-color: #424242;
 	border-radius: 4px;
 }
+
+div.header .logo {
+	display: block;
+	float: left;
+	margin: 15px 30px;
+	text-decoration: none;
+}
+
+div.header img {
+	height: 50px;
+	width: 50px;
+}
+
+div.header .logo_text {
+	padding-top: 10px;
+}
+
+.logo_text h1 {
+	color: #f0f0f0;
+}
+
+.logo_text p {
+	color: #449ddf;
+}
+
 
 ul.menu {
 	margin: 0;
@@ -34,7 +68,7 @@ ul.menu {
 	-moz-border-radius: 4px;
 	width: 97vw;
 	height: 34px;
-	min-width: 1000px;
+	min-width: 1300px;
 }
 
 ul.menu li {
@@ -98,7 +132,7 @@ ul.menu li:hover ul li a {
 
 ul.menu li:hover ul li a:hover {
 	background-color: transparent;
-	color: #c1deff;
+	color: #449ddf;
 }
 
 ul.menu li:hover ul li:first-child a:hover {
@@ -110,9 +144,10 @@ ul.menu li:hover ul li:first-child a:hover {
 div.content {
 	/* background-color: #424242;  */
 	border-radius: 4px;
-	margin-top: 4px;
-	height: 75vh;
-	width: 97vw;
+	margin-top: 40px;
+	margin-left: 15vw;
+	height: 67vh;
+	width: 60vw;
 }
 
 div.footer {

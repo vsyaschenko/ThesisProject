@@ -2,35 +2,59 @@
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" 
-        href="{% static 'main_app\style.css' %}">
-        
-        <meta http-equiv="Content-Type"
-        content="text/html; charset=utf-8">
+	<head>
+        <link rel="stylesheet" type="text/css" href="{% static 'main_app\styles.css' %}">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title>
         {% block title %}Главная{% endblock %} - База знаний
-        </title>
+        </title>	
     </head>
-    <body>
-        <header>
-            <h1>{{ company_name }}</h1>
-        </header>
-        <nav>
-            <a href="{% url 'index' %}">Главная</a>
-            <hr>
-            <a href="{% url 'add_problem' %}">Новая проблема</a>
-            <a href="{% url 'add_solution' %}">Предложить решение</a>
-            <hr>
-            {% for section in sections %}
-            <a href="{% url 'by_section' section.pk %}">
-            {{ section.name }}
-            </a>
-            {% endfor %}
-        </nav>
-        <section>
-        {% block content %}
-        {% endblock %}
-        </section>
-    </body>
+	<body>
+		<div class="header">
+			<a href="{% url 'index' %}" class="logo"><img src="{% static 'main_app\logo.png' %}"></a>
+			<div class="logo_text">
+				<h1>{{ company_name }}</h1>
+				<p>Корпоративная база знаний</p>
+			</div>
+		</div>
+		<ul class="menu">
+			<li><a href="{% url 'index' %}">Главная</a></li>
+			<li><a href="">Области знаний</a>
+				<ul>
+                    {% for section in sections %}
+                    <li><a href="{% url 'by_section' section.pk %}">{{ section.name }}</a></li>
+                    {% endfor %}
+				</ul>
+			</li>
+			<li><a href="">Расширенный поиск</a></li>
+			<li><a href="">Нормативно-справочная информация</a>
+				<ul>
+					<li><a href="">Разделы и знания</a></li>
+					<li><a href="">Активы</a></li>
+				</ul>
+			</li>
+			<li><a href="">Обратная связь</a>
+				<ul>
+					<li><a href="">Мои обращения</a></li>
+					<li><a href="{% url 'add_problem' %}">Сообщить о новой проблеме</a></li>
+					<li><a href="{% url 'add_solution' %}">Предложить решение проблемы</a></li>
+					<li><a href="">Сообщить об ошибке в базе знаний</a></li>
+					<li><a href="">Задать вопрос</a></li>
+				</ul>
+			</li>
+			<li><a href="">Обращения пользователей</a></li>
+			<li><a href="">Избранное</a></li>
+			<li><a href="">Контакты</a></li>		
+		</ul>
+		<div class="content">
+            <section>
+            {% block content %}
+            {% endblock %}
+            </section>	
+		</div>
+		<div class="footer">
+
+        </div>
+        
+	</body>
 </html>
