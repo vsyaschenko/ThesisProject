@@ -17,7 +17,7 @@ body {
 }
 
 div.header {
-	height: 80px;
+	height: 40px;
 	width: 97vw;
 	min-width: 1000px;
 	margin-bottom: 4px;
@@ -28,20 +28,20 @@ div.header {
 div.header .logo {
 	display: block;
 	float: left;
-	margin: 15px 30px;
+	margin: 7px 30px;
 	text-decoration: none;
 }
 
 div.header img {
-	height: 50px;
-	width: 50px;
+	height: 25px;
+	width: 25x;
 }
 
 div.header .logo_text {
 	padding-top: 10px;
 }
 
-.logo_text h1 {
+.logo_text h3 {
 	color: #f0f0f0;
 }
 
